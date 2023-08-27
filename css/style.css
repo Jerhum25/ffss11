@@ -5,8 +5,11 @@
   box-sizing: border-box;
 }
 
+html {
+  background: #222;
+}
 html body {
-  background: #fdfdfd;
+  background: #f2f2f2;
   font-family: Lato;
   width: 70%;
   margin: auto;
@@ -31,8 +34,39 @@ html body header .logo img {
 html body header .logo h1 {
   font-weight: 900;
 }
+html body header .menuMobile {
+  display: none;
+  align-items: center;
+  width: 25px;
+  height: 27px;
+}
+html body header .menuMobile .line {
+  width: 25px;
+  height: 3px;
+  background: #000;
+  position: relative;
+}
+html body header .menuMobile .line::before {
+  content: "";
+  width: 25px;
+  height: 3px;
+  background: #000;
+  position: absolute;
+  top: -9px;
+  left: 0;
+}
+html body header .menuMobile .line::after {
+  content: "";
+  width: 25px;
+  height: 3px;
+  background: #000;
+  position: absolute;
+  top: 9px;
+  left: 0;
+}
 html body header nav ul {
   display: flex;
+  flex-direction: row;
 }
 html body header nav ul li {
   list-style-type: none;
@@ -40,7 +74,7 @@ html body header nav ul li {
 html body header nav ul li a {
   text-decoration: none;
   color: #000;
-  font-size: 18px;
+  font-size: 16px;
   text-transform: capitalize;
   font-weight: 700;
 }
@@ -151,6 +185,7 @@ html body section.contact form textarea {
   padding: 5px;
   width: 350px;
   height: 122px;
+  outline: none;
 }
 html body section.contact form button {
   font-size: 18px;
@@ -177,6 +212,117 @@ html body footer .liensFFSS a {
 html body footer .reseauxSociaux .reseaux {
   display: flex;
   justify-content: space-around;
+}
+
+@media screen and (max-width: 420px) {
+  html body {
+    width: 100%;
+  }
+  html body header .logo {
+    z-index: 10;
+  }
+  html body header .logo img {
+    width: 50px;
+    height: 50px;
+  }
+  html body header .logo h1 {
+    font-size: 20px;
+  }
+  html body header nav {
+    z-index: 1;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: yellow;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(213, 243, 253);
+    justify-content: center;
+    align-items: center;
+  }
+  html body header nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+  html body header nav ul li {
+    margin: 20px;
+  }
+  html body header nav ul li a {
+    font-size: 25px;
+  }
+  html body header .menuMobile {
+    position: fixed;
+    right: 20px;
+    display: flex;
+    z-index: 10;
+  }
+  html body header .menuMobile .linesOpen {
+    width: 0;
+  }
+  html body header .menuMobile .linesOpen::before {
+    transform-origin: left;
+    transform: rotate(45deg);
+  }
+  html body header .menuMobile .linesOpen::after {
+    transform-origin: left;
+    transform: rotate(-45deg);
+  }
+  html body header .openMenu {
+    display: flex;
+  }
+  html body header .closeMenu {
+    display: none;
+  }
+  html body section {
+    padding: 5px;
+  }
+  html body section.banniere {
+    padding: 0;
+  }
+  html body section.banniere h2 {
+    font-size: 20px;
+  }
+  html body section.banniere p {
+    font-size: 18px;
+    border-radius: 0;
+    padding: 30px 10px;
+  }
+  html body section.association p {
+    padding: 10px;
+  }
+  html body section.contact {
+    margin-bottom: 20px;
+  }
+  html body section.contact form {
+    flex-direction: column;
+  }
+  html body section.contact form .coordonnees {
+    width: 100%;
+  }
+  html body section.contact form .coordonnees div {
+    width: 100%;
+  }
+  html body section.contact form .coordonnees div input {
+    width: 100%;
+  }
+  html body section.contact form textarea {
+    margin: 0 0 15px 0;
+    width: 100%;
+  }
+  html body footer {
+    flex-direction: column;
+  }
+  html body footer div:not(:first-child) {
+    margin-top: 35px;
+  }
+  html body footer div.reseauxSociaux .reseaux {
+    justify-content: start;
+    margin-top: 10px;
+  }
+  html body footer div.reseauxSociaux .reseaux a {
+    margin-right: 20px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
