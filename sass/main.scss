@@ -11,7 +11,8 @@ html {
   body {
     background: #f2f2f2;
     font-family: Lato;
-    width: 70%;
+    // width: 70%;
+    max-width: 1344px;
     margin: auto;
     header {
       display: flex;
@@ -30,6 +31,7 @@ html {
         }
         h1 {
           font-weight: 900;
+          white-space: nowrap;
         }
       }
       .menuMobile {
@@ -74,8 +76,23 @@ html {
               font-size: 16px;
               text-transform: capitalize;
               font-weight: 700;
+              white-space: nowrap;
+              position: relative;
+              &::after{
+                content: "";
+                width: 0;
+                height: 3px;
+                background: #000;
+                position: absolute;
+                left: 0;
+                bottom: -5px;
+              }
               &:hover {
                 color: #1f4175;
+                &::after{
+                  width: 100%;
+                  transition: .2s;
+                }
               }
             }
             &:not(:last-child) {
@@ -130,6 +147,7 @@ html {
           font-size: 18px;
           padding: 20px;
           text-align: justify;
+          line-height: 30px;
         }
       }
 
@@ -240,10 +258,30 @@ html {
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 1000px) {
   html {
     body {
-      width: 100%;
+      header {
+        nav {
+          ul {
+            flex-direction: column;
+            li{
+              a{
+                &::after{
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    body {
       header {
         .logo {
           z-index: 10;
@@ -255,7 +293,7 @@ html {
             font-size: 20px;
           }
         }
-        nav{
+        nav {
           z-index: 1;
           display: none;
           position: fixed;
@@ -267,102 +305,100 @@ html {
           background: rgb(213, 243, 253);
           justify-content: center;
           align-items: center;
-          ul{
+          ul {
             flex-direction: column;
             text-align: center;
-            li{
+            li {
               margin: 20px;
-              a{
+              a {
                 font-size: 25px;
               }
             }
           }
         }
-        .menuMobile{
+        .menuMobile {
           position: fixed;
           right: 20px;
           display: flex;
           z-index: 10;
-            .linesOpen {
-              width: 0;
-              &::before {
-                transform-origin: left;
-                transform: rotate(45deg);
-              }
-              &::after {
-                transform-origin: left;
-                transform: rotate(-45deg);
-              }
+          .linesOpen {
+            width: 0;
+            &::before {
+              transform-origin: left;
+              transform: rotate(45deg);
             }
+            &::after {
+              transform-origin: left;
+              transform: rotate(-45deg);
+            }
+          }
         }
-        .openMenu{
+        .openMenu {
           display: flex;
         }
-        .closeMenu{
+        .closeMenu {
           display: none;
         }
       }
 
+      section {
+        padding: 5px;
+        &.banniere {
+          padding: 0;
+          h2 {
+            font-size: 20px;
+          }
+          p {
+            font-size: 18px;
+            border-radius: 0;
+            padding: 30px 10px;
+          }
+        }
 
+        &.association {
+          p {
+            padding: 10px;
+          }
+        }
 
-section{
-  padding: 5px;
-  &.banniere{
-    padding: 0;
-    h2{
-      font-size: 20px;
-    }
-    p{
-      font-size: 18px;
-      border-radius: 0;
-      padding: 30px 10px;
-    }
-  }
-
-  &.association{
-    p{
-      padding: 10px;
-    }
-  }
-
-  &.contact{
-    margin-bottom: 20px;
-    form{
-      flex-direction: column;
-      .coordonnees{
-        width: 100%;
-        div{
-          width: 100%;
-          input{
-            width: 100%;
+        &.contact {
+          margin-bottom: 20px;
+          form {
+            flex-direction: column;
+            .coordonnees {
+              width: 100%;
+              div {
+                width: 100%;
+                input {
+                  width: 100%;
+                }
+              }
+            }
+            textarea {
+              margin: 0 0 15px 0;
+              width: 100%;
+            }
           }
         }
       }
-      textarea{
-        margin: 0 0 15px 0;
-        width: 100%;
-      }
-    }
-  }
-}
 
-footer{
-  flex-direction: column;
-  div{
-    &:not(:first-child){
-      margin-top: 35px;
-    }
-    &.reseauxSociaux{
-      .reseaux{
-        justify-content: start;
-        margin-top: 10px;
-        a{
-          margin-right: 20px;
+      footer {
+        flex-direction: column;
+        div {
+          &:not(:first-child) {
+            margin-top: 35px;
+          }
+          &.reseauxSociaux {
+            .reseaux {
+              justify-content: start;
+              margin-top: 10px;
+              a {
+                margin-right: 20px;
+              }
+            }
+          }
         }
       }
-    }
-  }
-}
     }
   }
 }
